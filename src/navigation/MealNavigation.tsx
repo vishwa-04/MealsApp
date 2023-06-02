@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CategoryMealScreen from '../screens/CategoryMealScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 import MealsDetailScreen from '../screens/MealsDetailScreen';
-import colors from '../colors';
+import colors from '../../colors';
 
 const Stack = createNativeStackNavigator();
 function MyStack(): JSX.Element {
@@ -20,9 +20,11 @@ function MyStack(): JSX.Element {
       />
       <Stack.Screen
         name="Home"
-        options={{
-          title: 'Category Meal Screen',
-        }}
+        options={({route}: any) => ({
+          title: route.params.title,
+          headerStyle: {backgroundColor: colors.primaryColor},
+          headerTintColor: 'white',
+        })}
         component={CategoryMealScreen}
       />
       <Stack.Screen

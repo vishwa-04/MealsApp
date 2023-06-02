@@ -8,7 +8,7 @@
 // import {NavigationContainer} from '@react-navigation/native';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import MyStack from './navigation/MealNavigation';
+import MyStack from './src/navigation/MealNavigation';
 
 function App(): JSX.Element {
   return (
