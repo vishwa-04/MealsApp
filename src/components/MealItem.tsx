@@ -1,27 +1,31 @@
 import React from 'react';
-import {View, Text, TouchableNativeFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableNativeFeedback,
+  ImageBackground,
+} from 'react-native';
 import {styles} from '../styles';
-export const MealItem = (itemData: {
-  title:
-    | string
-    | number
-    | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-}) => {
+export const MealItem = (itemData: any) => {
   return (
     <View style={styles.mealItem}>
-      <TouchableNativeFeedback>
+      <TouchableNativeFeedback onPress={itemData.onSelectMeal}>
         <View>
           <View style={{...styles.itemRow, ...styles.mealheader}}>
-            <Text>{itemData.title}</Text>
+            <ImageBackground
+              source={{uri: itemData.ImageUrl}}
+              style={styles.bgstyle}>
+              <Text style={styles.mealtitle}>{itemData.title}</Text>
+            </ImageBackground>
           </View>
           <View style={{...styles.itemRow, ...styles.mealDetail}}>
-            <Text>{itemData.duration}m</Text>
-            <Text>{itemData.complexity}</Text>
+            <Text style={styles.mealsDetailsText}>{itemData.duration}m</Text>
+            <Text style={styles.mealsDetailsText}>
+              {itemData.complexity.toUpperCase()}
+            </Text>
+            <Text style={styles.mealsDetailsText}>
+              {itemData.affordability.toUpperCase()}
+            </Text>
           </View>
         </View>
       </TouchableNativeFeedback>

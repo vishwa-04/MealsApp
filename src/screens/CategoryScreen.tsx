@@ -8,7 +8,7 @@ function CategoryScreen({navigation}: any): JSX.Element {
     return (
       <TouchableNativeFeedback
         onPress={() =>
-          navigation.navigate('Home', {
+          navigation.navigate('CategoryMealScreen', {
             categoryID: itemData.item.id,
             title: itemData.item.title,
           })

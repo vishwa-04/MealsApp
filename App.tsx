@@ -8,12 +8,13 @@
 // import {NavigationContainer} from '@react-navigation/native';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import MyStack from './src/navigation/MealNavigation';
+// import {MyStack} from './src/navigation/MealNavigation';
+import {MyTabs} from './src/navigation/MealNavigation';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <MyStack />
+      <MyTabs />
     </NavigationContainer>
   );
 }

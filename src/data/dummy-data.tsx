@@ -45,7 +45,7 @@ export const MEALS = [
   },
   {
     id: 'm2',
-    categoryIds: ['c3'],
+    categoryIds: ['c2'],
     title: 'Toast Hawaii',
     affordability: 'affordable',
     complexity: 'simple',
@@ -71,7 +71,7 @@ export const MEALS = [
   },
   {
     id: 'm3',
-    categoryIds: ['c4', 'c5'],
+    categoryIds: ['c3'],
     title: 'Classic Hamburger',
     affordability: 'pricey',
     complexity: 'simple',
@@ -100,7 +100,7 @@ export const MEALS = [
   },
   {
     id: 'm4',
-    categoryIds: ['c6'],
+    categoryIds: ['c4'],
     title: 'Wiener Schnitzel',
     affordability: 'luxurious',
     complexity: 'challenging',
@@ -133,7 +133,7 @@ export const MEALS = [
   },
   {
     id: 'm5',
-    categoryIds: ['c7', 'c8', 'c10'],
+    categoryIds: ['c2', 'c5', 'c10'],
     title: 'Salad with Smoked Salmon',
     affordability: 'luxurious',
     complexity: 'simple',
@@ -165,7 +165,7 @@ export const MEALS = [
   },
   {
     id: 'm6',
-    categoryIds: ['c10'],
+    categoryIds: ['c6', 'c10'],
     title: 'Delicious Orange Mousse',
     affordability: 'affordable',
     complexity: 'hard',
@@ -198,12 +198,13 @@ export const MEALS = [
   },
   {
     id: 'm7',
-    categoryIds: ['c4', 'c7'],
+    categoryIds: ['c7'],
     title: 'Pancakes',
     affordability: 'affordable',
     complexity: 'simple',
     ImageUrl:
       'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
+    duration: '20',
     ingredients: [
       '1 1/2 Cups all-purpose Flour',
       '3 1/2 Teaspoons Baking Powder',
@@ -226,7 +227,7 @@ export const MEALS = [
   },
   {
     id: 'm8',
-    categoryIds: ['c2', 'c9'],
+    categoryIds: ['c8'],
     title: 'Creamy Indian Chicken Curry',
     affordability: 'pricey',
     complexity: 'challenging',
@@ -256,7 +257,7 @@ export const MEALS = [
   },
   {
     id: 'm9',
-    categoryIds: ['c6', 'c3'],
+    categoryIds: ['c9'],
     title: 'Chocolate Souffle',
     affordability: 'affordable',
     complexity: 'hard',
@@ -303,7 +304,7 @@ export const MEALS = [
   },
   {
     id: 'm10',
-    categoryIds: ['c5', 'c4'],
+    categoryIds: ['c2', 'c5', 'c10'],
     title: 'Asparagus Salad with Cherry Tomatoes',
     affordability: 'luxurious',
     complexity: 'simple',
