@@ -66,4 +66,39 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
+  bottomTab: {
+    height: 60,
+  },
+  bottomLabelTab: {
+    fontSize: 18,
+  },
+  drawer: {
+    // borderWidth: 2,
+    // borderColor: 'yellow',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  mealDetailImage: {
+    height: 200,
+    width: '100%',
+  },
+  mealDetailTitle: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  filterTitle: {
+    fontSize: 22,
+    margin: 20,
+    textAlign: 'center',
+    color: 'black',
+  },
+  filterContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    // alignItems: 'center',
+  },
 });
