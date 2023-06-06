@@ -1,12 +1,17 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
 import {MealItem} from '../components/MealItem';
-import {MEALS} from '../data/dummy-data';
+// import {MEALS} from '../data/dummy-data';
+import {useSelector} from 'react-redux';
 import {styles} from '../styles';
+import {RootState} from '../redux/store';
 
 function CategoryMealScreen(props: any): JSX.Element {
   const {categoryID} = props.route.params;
-  const displayMeal = MEALS.filter(
+  const availableMeals = useSelector(
+    (state: RootState) => state.meals.filteredMeals,
+  );
+  const displayMeal = availableMeals.filter(
     meal => meal.categoryIds.indexOf(categoryID) >= 0,
   );
 

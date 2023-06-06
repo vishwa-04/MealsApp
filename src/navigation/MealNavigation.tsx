@@ -30,7 +30,6 @@ export const MyDrawer = () => {
         name="filter"
         component={FilterScreen}
         options={{
-          title: 'Filter Screen',
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',
           headerShown: true,

@@ -14,13 +14,17 @@ import {
   MyDrawer,
   // MyTabs,
 } from './src/navigation/MealNavigation';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
-      <MyDrawer />
-      {/* <MyTabs /> */}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyDrawer />
+        {/* <MyTabs /> */}
+      </NavigationContainer>
+    </Provider>
   );
 }
 

@@ -1,13 +1,53 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {ScrollView, Image, Text, View} from 'react-native';
-import {MEALS} from '../data/dummy-data';
+import Icon from 'react-native-vector-icons/FontAwesome';
+// import {MEALS} from '../data/dummy-data';
+import {useSelector, useDispatch} from 'react-redux';
+import {mealReducer} from '../redux/slice';
+import {RootState} from '../redux/store';
 
 import {styles} from '../styles';
 
 function MealsDetailScreen(props: any): JSX.Element {
+  const togFav = props.route.params?.toggleFav;
+  const isFav = props.route.params?.isFav;
+  // console.log(togFav);
+
+  props.navigation.setOptions({
+    // eslint-disable-next-line react/no-unstable-nested-components
+    headerRight: () => (
+      <>
+        <Icon
+          name={isFav ? 'star' : 'star-o'}
+          size={22}
+          color="white"
+          onPress={togFav}
+        />
+        {/* <Icon name="star-o" size={22} color="white" onPress={togFav} /> */}
+      </>
+    ),
+  });
+
   const {mealId} = props.route.params;
-  console.log(mealId);
-  const [selectedMeal] = MEALS.filter(meal => meal.id === mealId);
+  const currentMealIsFav = useSelector((state: RootState) =>
+    state.meals.favMeals.some((meal: any) => meal.id === mealId),
+  );
+  const dispatch = useDispatch();
+
+  const toggleFavHandler = useCallback(() => {
+    dispatch(mealReducer(mealId));
+    // console.log(mealId);
+  }, [dispatch, mealId]);
+
+  useEffect(() => {
+    props.navigation.setParams({isFav: currentMealIsFav});
+  }, [currentMealIsFav, props.navigation]);
+
+  useEffect(() => {
+    props.navigation.setParams({toggleFav: toggleFavHandler});
+  }, [props.navigation, toggleFavHandler]);
+  const mealInDetail = useSelector((state: RootState) => state.meals.meals);
+  const [selectedMeal] = mealInDetail.filter(meal => meal.id === mealId);
 
   return (
     <ScrollView>
