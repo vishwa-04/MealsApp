@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {useSelector, useDispatch} from 'react-redux';
 import {mealReducer} from '../redux/slice';
 import {RootState} from '../redux/store';
-
 import {styles} from '../styles';
 
 function MealsDetailScreen(props: any): JSX.Element {
@@ -16,15 +15,12 @@ function MealsDetailScreen(props: any): JSX.Element {
   props.navigation.setOptions({
     // eslint-disable-next-line react/no-unstable-nested-components
     headerRight: () => (
-      <>
-        <Icon
-          name={isFav ? 'star' : 'star-o'}
-          size={22}
-          color="white"
-          onPress={togFav}
-        />
-        {/* <Icon name="star-o" size={22} color="white" onPress={togFav} /> */}
-      </>
+      <Icon
+        name={isFav ? 'star' : 'star-o'}
+        size={22}
+        color="white"
+        onPress={togFav}
+      />
     ),
   });
 
@@ -46,6 +42,7 @@ function MealsDetailScreen(props: any): JSX.Element {
   useEffect(() => {
     props.navigation.setParams({toggleFav: toggleFavHandler});
   }, [props.navigation, toggleFavHandler]);
+
   const mealInDetail = useSelector((state: RootState) => state.meals.meals);
   const [selectedMeal] = mealInDetail.filter(meal => meal.id === mealId);
 
@@ -64,11 +61,15 @@ function MealsDetailScreen(props: any): JSX.Element {
       </View>
       <Text style={styles.mealDetailTitle}>Ingredients</Text>
       {selectedMeal.ingredients.map(ingredient => (
-        <Text key={ingredient}>{ingredient}</Text>
+        <Text style={styles.mealDetailPoints} key={ingredient}>
+          {ingredient}
+        </Text>
       ))}
       <Text style={styles.mealDetailTitle}>Steps</Text>
       {selectedMeal.steps.map(step => (
-        <Text key={step}>{step}</Text>
+        <Text style={styles.mealDetailPoints} key={step}>
+          {step}
+        </Text>
       ))}
     </ScrollView>
   );

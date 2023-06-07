@@ -1,9 +1,13 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {FlatList, Text, TouchableNativeFeedback, View} from 'react-native';
 import {CATEGORIES} from '../data/dummy-data';
 import {styles} from '../styles';
+import {RootStackParamList} from '../types/navigationTypes';
 
-function CategoryScreen({navigation}: any): JSX.Element {
+function CategoryScreen({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList>): JSX.Element {
   const renderGridItem = (itemData: any) => {
     return (
       <TouchableNativeFeedback

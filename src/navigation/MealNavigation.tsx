@@ -12,6 +12,7 @@ import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FavouriteScreen from '../screens/FavouriteScreen';
 import {styles} from '../styles';
 import FilterScreen from '../screens/FilterScreen';
+import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 
 const Drawer = createDrawerNavigator();
 export const MyDrawer = () => {
@@ -29,11 +30,24 @@ export const MyDrawer = () => {
       <Drawer.Screen
         name="filter"
         component={FilterScreen}
-        options={{
+        options={({route}: any) => ({
+          title: 'Filter Screen',
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',
           headerShown: true,
-        }}
+          // eslint-disable-next-line react/no-unstable-nested-components
+          headerRight: () => (
+            <TouchableNativeFeedback style={styles.saveTouch}>
+              <Icon
+                name="save"
+                size={22}
+                color="white"
+                style={styles.drawer}
+                onPress={route.params?.save}
+              />
+            </TouchableNativeFeedback>
+          ),
+        })}
       />
     </Drawer.Navigator>
   );
@@ -112,7 +126,15 @@ export const MyFavNavStack = (props: any) => {
           ),
         }}
       />
-      <FavNavStack.Screen name="FavMealDetail" component={MealsDetailScreen} />
+      <FavNavStack.Screen
+        name="Screen3"
+        component={MealsDetailScreen}
+        options={({route}: any) => ({
+          title: route.params.title,
+          headerStyle: {backgroundColor: colors.primaryColor},
+          headerTintColor: 'white',
+        })}
+      />
     </FavNavStack.Navigator>
   );
 };

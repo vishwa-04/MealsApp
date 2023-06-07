@@ -30,10 +30,35 @@ export const MealSlice = createSlice({
         return {...state, favMeals: state.favMeals.concat(meal)};
       }
     },
-    // filterReducer: (state: any = initialState, action: any) => {},
+    filterReducer: (state: any, action) => {
+      const appliedFilters = action.payload;
+      const updatedFilteredMeals = state.meals.filter(
+        (meal: {
+          isGlutenFree: boolean;
+          isLactoseFree: boolean;
+          isVegetarian: boolean;
+          isVegan: boolean;
+        }) => {
+          if (appliedFilters.glutenfree && !meal.isGlutenFree) {
+            return false;
+          }
+          if (appliedFilters.lactosefree && !meal.isLactoseFree) {
+            return false;
+          }
+          if (appliedFilters.vegetarian && !meal.isVegetarian) {
+            return false;
+          }
+          if (appliedFilters.vegan && !meal.isVegan) {
+            return false;
+          }
+          return true;
+        },
+      );
+      return {...state, filteredMeals: updatedFilteredMeals};
+    },
   },
 });
 
-export const {mealReducer} = MealSlice.actions;
+export const {mealReducer, filterReducer} = MealSlice.actions;
 
 export default MealSlice.reducer;

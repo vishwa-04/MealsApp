@@ -90,9 +90,23 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
   },
+  mealDetailPoints: {
+    color: 'black',
+    fontSize: 15,
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    marginBottom: 10,
+  },
   filterTitle: {
     fontSize: 22,
     margin: 20,
+    textAlign: 'center',
+    color: 'black',
+  },
+  NoFavText: {
+    // justifyContent: 'center',
+    fontSize: 22,
+    width: '100%',
+    marginTop: '70%',
     textAlign: 'center',
     color: 'black',
   },
@@ -100,5 +114,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     // alignItems: 'center',
+  },
+  saveTouch: {
+    // backgroundColor: 'red',
+    padding: 10,
   },
 });
