@@ -1,8 +1,17 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
+import {
+  createBottomTabNavigator,
+  BottomTabScreenProps,
+} from '@react-navigation/bottom-tabs';
+import {
+  createDrawerNavigator,
+  DrawerScreenProps,
+} from '@react-navigation/drawer';
 import CategoryMealScreen from '../screens/CategoryMealScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 import MealsDetailScreen from '../screens/MealsDetailScreen';
@@ -13,8 +22,14 @@ import FavouriteScreen from '../screens/FavouriteScreen';
 import {styles} from '../styles';
 import FilterScreen from '../screens/FilterScreen';
 import {TouchableNativeFeedback} from 'react-native-gesture-handler';
+import {
+  RootDrawerParamList,
+  RootFavStackParamList,
+  RootStackParamList,
+} from '../types/navigationTypes';
+import {CompositeScreenProps} from '@react-navigation/native';
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<RootDrawerParamList>();
 export const MyDrawer = () => {
   return (
     <Drawer.Navigator
@@ -30,7 +45,7 @@ export const MyDrawer = () => {
       <Drawer.Screen
         name="filter"
         component={FilterScreen}
-        options={({route}: any) => ({
+        options={({route}: DrawerScreenProps<RootDrawerParamList>) => ({
           title: 'Filter Screen',
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',
@@ -52,8 +67,8 @@ export const MyDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const Stack = createNativeStackNavigator();
-export const MyStack = (props: any) => {
+const Stack = createNativeStackNavigator<RootStackParamList>();
+export const MyStack = (props: NativeStackScreenProps<RootStackParamList>) => {
   return (
     <Stack.Navigator screenOptions={{animation: 'fade_from_bottom'}}>
       <Stack.Screen
@@ -79,8 +94,13 @@ export const MyStack = (props: any) => {
       />
       <Stack.Screen
         name="CategoryMealScreen"
-        options={({route}: any) => ({
-          title: route.params.title,
+        options={({
+          route,
+        }: NativeStackScreenProps<
+          RootStackParamList,
+          'CategoryMealScreen'
+        >) => ({
+          title: route.params?.title,
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',
         })}
@@ -88,7 +108,9 @@ export const MyStack = (props: any) => {
       />
       <Stack.Screen
         name="Screen3"
-        options={({route}: any) => ({
+        options={({
+          route,
+        }: NativeStackScreenProps<RootStackParamList, 'Screen3'>) => ({
           title: route.params.title,
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',
@@ -101,8 +123,13 @@ export const MyStack = (props: any) => {
   );
 };
 
-const FavNavStack = createNativeStackNavigator();
-export const MyFavNavStack = (props: any) => {
+const FavNavStack = createNativeStackNavigator<RootFavStackParamList>();
+export const MyFavNavStack = (
+  props: CompositeScreenProps<
+    NativeStackScreenProps<RootFavStackParamList>,
+    DrawerScreenProps<RootDrawerParamList>
+  >,
+) => {
   return (
     <FavNavStack.Navigator>
       <FavNavStack.Screen
@@ -129,7 +156,9 @@ export const MyFavNavStack = (props: any) => {
       <FavNavStack.Screen
         name="Screen3"
         component={MealsDetailScreen}
-        options={({route}: any) => ({
+        options={({
+          route,
+        }: NativeStackScreenProps<RootFavStackParamList, 'Screen3'>) => ({
           title: route.params.title,
           headerStyle: {backgroundColor: colors.primaryColor},
           headerTintColor: 'white',

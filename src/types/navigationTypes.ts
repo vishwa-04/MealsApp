@@ -1,7 +1,7 @@
 export type RootStackParamList = {
   Screen2: undefined;
   CategoryMealScreen: {categoryID: string; title: string};
-  MealsDetailScreen: {mealId: string; title: string};
+  Screen3: {mealId: string; title: string};
 };
 
 export type RootDrawerParamList = {
@@ -10,7 +10,7 @@ export type RootDrawerParamList = {
 };
 export type RootFavStackParamList = {
   Favourtie: undefined;
-  Screen3: undefined;
+  Screen3: {title: string};
 };
 export type RootBottomTabParamList = {
   Favourtie: undefined;
