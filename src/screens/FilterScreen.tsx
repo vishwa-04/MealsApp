@@ -1,3 +1,4 @@
+import {DrawerScreenProps} from '@react-navigation/drawer';
 import React, {useCallback, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Switch} from 'react-native-paper';
@@ -6,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {filterReducer} from '../redux/slice';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import {styles} from '../styles';
+import {RootDrawerParamList} from '../types/navigationTypes';
 interface filters {
   glutenfree: boolean;
   vegan: boolean;
@@ -15,7 +17,7 @@ interface filters {
 function FilterScreen({
   // route,
   navigation,
-}: any): JSX.Element {
+}: DrawerScreenProps<RootDrawerParamList, 'filter'>): JSX.Element {
   // console.log(props);
 
   const [isGluttenFree, setIsGluttenFree] = useState(false);
