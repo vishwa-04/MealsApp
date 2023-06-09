@@ -2,6 +2,9 @@ export type RootStackParamList = {
   Screen2: undefined;
   CategoryMealScreen: {categoryID: string; title: string};
   Screen3: {mealId: string; title: string};
+  save: undefined;
+  isFav: undefined;
+  toggleFav: undefined;
 };
 
 export type RootDrawerParamList = {

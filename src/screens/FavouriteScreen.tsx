@@ -5,8 +5,12 @@ import {MealList} from '../components/MealList';
 import {Text} from 'react-native-paper';
 import {View} from 'react-native';
 import {styles} from '../styles';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootFavStackParamList} from '../types/navigationTypes';
 
-function FavouriteScreen(props: any): JSX.Element {
+function FavouriteScreen(
+  props: NativeStackScreenProps<RootFavStackParamList>,
+): JSX.Element {
   const favoMeals = useSelector((state: RootState) => state.meals.favMeals);
 
   if (favoMeals.length === 0 || !favoMeals) {

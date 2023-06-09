@@ -10,8 +10,22 @@ export const CATEGORIES = [
   {id: 'c9', title: 'French', color: '#ffc7ff'},
   {id: 'c10', title: 'Summer', color: '#47fced'},
 ];
-
-export const MEALS = [
+export type meals = {
+  id: string;
+  categoryIds: string[];
+  title: string;
+  affordability: string;
+  complexity: string;
+  ImageUrl: string;
+  duration: string;
+  ingredients: string[];
+  steps: string[];
+  isGlutanFree: boolean;
+  isVegan: boolean;
+  isVegeterian: boolean;
+  isLactoseFree: boolean;
+};
+export const MEALS: meals[] = [
   {
     id: 'm1',
     categoryIds: ['c1', 'c2'],

@@ -1,4 +1,6 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useCallback, useEffect} from 'react';
+import {Vibration} from 'react-native';
 import {ScrollView, Image, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import {MEALS} from '../data/dummy-data';
@@ -6,8 +8,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {mealReducer} from '../redux/slice';
 import {RootState} from '../redux/store';
 import {styles} from '../styles';
+import {RootStackParamList} from '../types/navigationTypes';
 
-function MealsDetailScreen(props: any): JSX.Element {
+function MealsDetailScreen(
+  props: NativeStackScreenProps<RootStackParamList>,
+): JSX.Element {
   const togFav = props.route.params?.toggleFav;
   const isFav = props.route.params?.isFav;
   // console.log(togFav);
@@ -19,14 +24,17 @@ function MealsDetailScreen(props: any): JSX.Element {
         name={isFav ? 'star' : 'star-o'}
         size={22}
         color="white"
-        onPress={togFav}
+        onPress={() => {
+          togFav();
+          Vibration.vibrate();
+        }}
       />
     ),
   });
 
   const {mealId} = props.route.params;
   const currentMealIsFav = useSelector((state: RootState) =>
-    state.meals.favMeals.some((meal: any) => meal.id === mealId),
+    state.meals.favMeals.some(meal => meal.id === mealId),
   );
   const dispatch = useDispatch();
 
