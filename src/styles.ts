@@ -119,4 +119,35 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'red',
     padding: 10,
   },
+  registrationLogo: {
+    // borderWidth: 2,
+    // borderColor: 'red',
+    height: 200,
+    width: 200,
+  },
+  registrationLogoContainer: {
+    alignItems: 'center',
+  },
+  registerTitle: {
+    fontSize: 30,
+    color: '#18b5de',
+    fontWeight: 'bold',
+  },
+  detailsContainer: {
+    // borderWidth: 2,
+    // borderColor: 'red',
+    margin: 10,
+  },
+  input: {
+    height: 40,
+    fontSize: 20,
+    borderWidth: 1,
+    padding: 10,
+    margin: 20,
+    marginBottom: 20,
+    borderRadius: 20,
+  },
+  registerLabel: {
+    fontSize: 20,
+  },
 });

@@ -22,6 +22,8 @@ function CategoryMealScreen({
   const displayMeal = availableMeals.filter(
     meal => meal.categoryIds.indexOf(categoryID) >= 0,
   );
+  console.log(displayMeal, 'this is display meals');
+
   if (displayMeal.length === 0 || !displayMeal) {
     return (
       <View>

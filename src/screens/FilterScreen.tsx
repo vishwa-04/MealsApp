@@ -3,9 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Switch} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
-
 import {filterReducer} from '../redux/slice';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import {styles} from '../styles';
 import {RootDrawerParamList} from '../types/navigationTypes';
 interface filters {
@@ -48,7 +46,6 @@ function FilterScreen({
     };
 
     dispatch(filterReducer(appliedFilters));
-    // console.log(dispatch(appliedFilters));
   }, [isGluttenFree, isVegan, isVegeterian, isLactoseFree, dispatch]);
   useEffect(() => {
     navigation.setParams({save: saveFilter});
