@@ -16,7 +16,7 @@ export const MealSlice = createSlice({
       console.log(mealId);
 
       const existingIndex = state.favMeals.findIndex(
-        (meal: {id: any}) => meal.id === mealId,
+        (meal: {id: string}) => meal.id === mealId,
       );
       if (existingIndex >= 0) {
         const updatedFavMeals = [...state.favMeals];
@@ -34,12 +34,12 @@ export const MealSlice = createSlice({
       const appliedFilters = action.payload;
       const updatedFilteredMeals = state.meals.filter(
         (meal: {
-          isGlutenFree: boolean;
+          isGlutanFree: boolean;
           isLactoseFree: boolean;
           isVegetarian: boolean;
           isVegan: boolean;
         }) => {
-          if (appliedFilters.glutenfree && !meal.isGlutenFree) {
+          if (appliedFilters.glutenfree && !meal.isGlutanFree) {
             return false;
           }
           if (appliedFilters.lactosefree && !meal.isLactoseFree) {
