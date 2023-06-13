@@ -16,21 +16,22 @@ function MealsDetailScreen(
   const togFav = props.route.params?.toggleFav;
   const isFav = props.route.params?.isFav;
   // console.log(togFav);
-
-  props.navigation.setOptions({
-    // eslint-disable-next-line react/no-unstable-nested-components
-    headerRight: () => (
-      <Icon
-        name={isFav ? 'star' : 'star-o'}
-        size={22}
-        color="white"
-        onPress={() => {
-          togFav();
-          Vibration.vibrate();
-        }}
-      />
-    ),
-  });
+  useEffect(() => {
+    props.navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
+      headerRight: () => (
+        <Icon
+          name={isFav ? 'star' : 'star-o'}
+          size={22}
+          color="white"
+          onPress={() => {
+            togFav();
+            Vibration.vibrate();
+          }}
+        />
+      ),
+    });
+  }, [togFav, isFav, props.navigation]);
 
   const {mealId} = props.route.params;
   const currentMealIsFav = useSelector((state: RootState) =>
